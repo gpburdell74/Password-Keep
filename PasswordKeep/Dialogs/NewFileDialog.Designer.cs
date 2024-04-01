@@ -177,7 +177,7 @@
 			CloseButton.HoverFont = new Font("Segoe UI", 9.75F);
 			CloseButton.HoverForeColor = Color.Black;
 			CloseButton.HoverStartColor = Color.FromArgb(218, 194, 204);
-			CloseButton.Image = Properties.Resources.cancel_16x16;
+			CloseButton.Image = Properties.Resources.Cancel16;
 			CloseButton.ImageAlign = ContentAlignment.MiddleLeft;
 			CloseButton.Location = new Point(415, 350);
 			CloseButton.Name = "CloseButton";
@@ -246,7 +246,7 @@
 			// 
 			// PwdImage
 			// 
-			PwdImage.Image = Properties.Resources.Password_Lock;
+			PwdImage.Image = Properties.Resources.PasswordLock;
 			PwdImage.Location = new Point(12, 231);
 			PwdImage.Name = "PwdImage";
 			PwdImage.Size = new Size(32, 32);
@@ -255,7 +255,7 @@
 			// 
 			// UserIdImage
 			// 
-			UserIdImage.Image = Properties.Resources.User_ID_Keys;
+			UserIdImage.Image = Properties.Resources.UserIDKeys;
 			UserIdImage.Location = new Point(12, 169);
 			UserIdImage.Name = "UserIdImage";
 			UserIdImage.Size = new Size(32, 32);

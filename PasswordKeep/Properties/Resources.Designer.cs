@@ -73,9 +73,9 @@ namespace PasswordKeep.UI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap cancel_16x16 {
+        internal static System.Drawing.Bitmap Cancel16 {
             get {
-                object obj = ResourceManager.GetObject("cancel_16x16", resourceCulture);
+                object obj = ResourceManager.GetObject("Cancel16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace PasswordKeep.UI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Computer_Secure {
+        internal static System.Drawing.Bitmap ComputerSecure {
             get {
-                object obj = ResourceManager.GetObject("Computer Secure", resourceCulture);
+                object obj = ResourceManager.GetObject("ComputerSecure", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,19 @@ namespace PasswordKeep.UI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Credit_Cards {
+        internal static System.Drawing.Bitmap CreditCards {
             get {
-                object obj = ResourceManager.GetObject("Credit Cards", resourceCulture);
+                object obj = ResourceManager.GetObject("CreditCards", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Delete16 {
+            get {
+                object obj = ResourceManager.GetObject("Delete16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -121,9 +131,9 @@ namespace PasswordKeep.UI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Document_New {
+        internal static System.Drawing.Bitmap DocumentNewA {
             get {
-                object obj = ResourceManager.GetObject("Document New", resourceCulture);
+                object obj = ResourceManager.GetObject("DocumentNewA", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -131,9 +141,19 @@ namespace PasswordKeep.UI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Document_New1 {
+        internal static System.Drawing.Bitmap DocumentNewB {
             get {
-                object obj = ResourceManager.GetObject("Document New1", resourceCulture);
+                object obj = ResourceManager.GetObject("DocumentNewB", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Edit16 {
+            get {
+                object obj = ResourceManager.GetObject("Edit16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -161,16 +181,6 @@ namespace PasswordKeep.UI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap IMG_20111026_170527 {
-            get {
-                object obj = ResourceManager.GetObject("IMG_20111026_170527", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Internet {
             get {
                 object obj = ResourceManager.GetObject("Internet", resourceCulture);
@@ -181,9 +191,9 @@ namespace PasswordKeep.UI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Internet_Secure {
+        internal static System.Drawing.Bitmap InternetSecure {
             get {
-                object obj = ResourceManager.GetObject("Internet Secure", resourceCulture);
+                object obj = ResourceManager.GetObject("InternetSecure", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -211,9 +221,9 @@ namespace PasswordKeep.UI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap New {
+        internal static System.Drawing.Bitmap Me {
             get {
-                object obj = ResourceManager.GetObject("New", resourceCulture);
+                object obj = ResourceManager.GetObject("Me", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -221,9 +231,29 @@ namespace PasswordKeep.UI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Password_Lock {
+        internal static System.Drawing.Bitmap New16 {
             get {
-                object obj = ResourceManager.GetObject("Password_Lock", resourceCulture);
+                object obj = ResourceManager.GetObject("New16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Open16 {
+            get {
+                object obj = ResourceManager.GetObject("Open16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PasswordLock {
+            get {
+                object obj = ResourceManager.GetObject("PasswordLock", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -241,9 +271,19 @@ namespace PasswordKeep.UI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Save {
+        internal static System.Drawing.Bitmap Save16 {
             get {
-                object obj = ResourceManager.GetObject("Save", resourceCulture);
+                object obj = ResourceManager.GetObject("Save16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SaveAs16 {
+            get {
+                object obj = ResourceManager.GetObject("SaveAs16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -261,9 +301,9 @@ namespace PasswordKeep.UI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Secure_File {
+        internal static System.Drawing.Bitmap SecureFile {
             get {
-                object obj = ResourceManager.GetObject("Secure_File", resourceCulture);
+                object obj = ResourceManager.GetObject("SecureFile", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -271,19 +311,9 @@ namespace PasswordKeep.UI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Secure1 {
+        internal static System.Drawing.Bitmap UserIDKeys {
             get {
-                object obj = ResourceManager.GetObject("Secure1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap User_ID_Keys {
-            get {
-                object obj = ResourceManager.GetObject("User_ID_Keys", resourceCulture);
+                object obj = ResourceManager.GetObject("UserIDKeys", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

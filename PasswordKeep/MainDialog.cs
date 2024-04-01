@@ -69,6 +69,12 @@ namespace PasswordKeep.UI
             FileMenuSaveAs.Click += HandleFileMenuSaveAsClicked;
             FileMenuSave.Click += HandleFileMenuSaveClicked;
             FileMenuExit.Click += HandleFileMenuExitClicked;
+
+            // Tool Strip - File Section
+            NewButton.Click += HandleFileMenuNewClicked;
+            OpenButton.Click += HandleFileMenuOpenClicked;
+            SaveButton.Click += HandleFileMenuSaveClicked;
+            SaveAsButton.Click += HandleFileMenuSaveAsClicked;
         }
         /// <summary>
         /// Removes the event handlers for the controls on the dialog.
@@ -82,7 +88,13 @@ namespace PasswordKeep.UI
             FileMenuSaveAs.Click -= HandleFileMenuSaveAsClicked;
             FileMenuSave.Click -= HandleFileMenuSaveClicked;
             FileMenuExit.Click -= HandleFileMenuExitClicked;
-        }
+
+			// Tool Strip - File Section
+			NewButton.Click -= HandleFileMenuNewClicked;
+			OpenButton.Click -= HandleFileMenuOpenClicked;
+			SaveButton.Click -= HandleFileMenuSaveClicked;
+			SaveAsButton.Click -= HandleFileMenuSaveAsClicked;
+		}
 		/// <summary>
 		/// Sets the display state for the controls on the dialog based on
 		/// current conditions.
@@ -101,7 +113,11 @@ namespace PasswordKeep.UI
             FileMenuSave.Visible = fileIsOpen;
             FileMenuSaveAs.Visible = fileIsOpen;
 
-            if (fileIsOpen)
+            SaveButton.Visible = fileIsOpen;
+			SaveAsButton.Visible = fileIsOpen;
+			ToolStripDividerB.Visible = fileIsOpen;
+
+			if (fileIsOpen)
                 Text = "Password Keep - [" + Path.GetFileName(_fileName) + "]";
             else
                 Text = "Password Keep";
