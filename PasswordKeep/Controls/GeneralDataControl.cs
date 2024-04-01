@@ -87,6 +87,10 @@ namespace PasswordKeep.UI
 
 			DataGrid.CellClick += HandleGridCellClicked;
 			DataGrid.CellDoubleClick += HandleGridCellDoubleClicked;
+
+			ActionBar.AddClicked += HandleAddButtonClicked;
+			ActionBar.EditClicked += HandleEditButtonClicked;
+			ActionBar.RemoveClicked += HandleRemoveButtonClicked;
 		}
 		/// <summary>
 		/// Removes the event handlers for the controls on the dialog.
@@ -100,6 +104,9 @@ namespace PasswordKeep.UI
 			DataGrid.CellClick -= HandleGridCellClicked;
 			DataGrid.CellDoubleClick -= HandleGridCellDoubleClicked;
 
+			ActionBar.AddClicked -= HandleAddButtonClicked;
+			ActionBar.EditClicked -= HandleEditButtonClicked;
+			ActionBar.RemoveClicked -= HandleRemoveButtonClicked;
 		}
 		/// <summary>
 		/// Initializes the control and dialog state according to the form data.
@@ -118,18 +125,31 @@ namespace PasswordKeep.UI
 		/// </remarks>
 		protected override void SetDisplayState()
 		{
+			bool itemSelected = DataGrid.SelectedRows.Count > 0 || DataGrid.CurrentRow != null;
+
+			ActionBar.EditEnabled = itemSelected;
+			ActionBar.RemoveEnabled = itemSelected;
 		}
 		/// <summary>
 		/// Sets the state of the UI controls before the data content is loaded.
 		/// </summary>
 		protected override void SetPreLoadState()
 		{
+			Cursor = Cursors.WaitCursor;
+			DataGrid.Enabled = false;
+			ActionBar.Enabled = false;
+			Application.DoEvents();
+			SuspendLayout();
 		}
 		/// <summary>
 		/// Sets the state of the UI controls after the data content is loaded.
 		/// </summary>
 		protected override void SetPostLoadState()
 		{
+			Cursor = Cursors.Default;
+			DataGrid.Enabled = true;
+			ActionBar.Enabled = true;
+			ResumeLayout();
 		}
 		#endregion
 
@@ -162,6 +182,7 @@ namespace PasswordKeep.UI
 		private void HandleGridDataMemberChanged(object? sender, EventArgs e)
 		{
 			Changed?.Invoke(this, e);
+			SetState();
 		}
 		/// <summary>
 		/// Handles the event when a grid cell is clicked.
@@ -170,6 +191,7 @@ namespace PasswordKeep.UI
 		/// <param name="e">The <see cref="DataGridViewCellEventArgs"/> instance containing the event data.</param>
 		private void HandleGridCellClicked(object? sender, DataGridViewCellEventArgs e)
 		{
+			SetPreLoadState();
 			if (e.ColumnIndex > 0)
 			{
 				DataGridViewLinkColumn? column = DataGrid.Columns[e.ColumnIndex] as DataGridViewLinkColumn;
@@ -185,6 +207,8 @@ namespace PasswordKeep.UI
 					}
 				}
 			}
+			SetState();
+			SetPostLoadState();
 		}
 		/// <summary>
 		/// Handles the event when a grid cell is double-clicked.
@@ -193,6 +217,8 @@ namespace PasswordKeep.UI
 		/// <param name="e">The <see cref="DataGridViewCellEventArgs"/> instance containing the event data.</param>
 		private void HandleGridCellDoubleClicked(object? sender, DataGridViewCellEventArgs e)
 		{
+			SetPreLoadState();
+			SetState();
 			DataGridViewLinkColumn? column = DataGrid.Columns[e.ColumnIndex] as DataGridViewLinkColumn;
 			if (column != null)
 			{
@@ -208,6 +234,40 @@ namespace PasswordKeep.UI
 				}
 				dialog.Dispose();
 			}
+			SetPostLoadState();
+		}
+		/// <summary>
+		/// Handles the event when the Add button is clicked.
+		/// </summary>
+		/// <param name="sender">The sender.</param>
+		/// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+		private void HandleAddButtonClicked(object? sender, EventArgs e)
+		{
+			SetPreLoadState();
+
+			SetPostLoadState();
+		}
+		/// <summary>
+		/// Handles the event when the Edit button is clicked.
+		/// </summary>
+		/// <param name="sender">The sender.</param>
+		/// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+		private void HandleEditButtonClicked(object? sender, EventArgs e)
+		{
+			SetPreLoadState();
+
+			SetPostLoadState();
+		}
+		/// <summary>
+		/// Handles the event when the Remove button is clicked.
+		/// </summary>
+		/// <param name="sender">The sender.</param>
+		/// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+		private void HandleRemoveButtonClicked(object? sender, EventArgs e)
+		{
+			SetPreLoadState();
+
+			SetPostLoadState();
 		}
 		#endregion
 	}

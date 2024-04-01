@@ -21,9 +21,7 @@
 			DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
 			DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
 			DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-			ActionPanel = new Panel();
 			DataGrid = new DataGridView();
-			DsProvider = new BindingSource(components);
 			NameCol = new DataGridViewTextBoxColumn();
 			ServiceDescCol = new DataGridViewTextBoxColumn();
 			DescCol = new DataGridViewTextBoxColumn();
@@ -33,17 +31,11 @@
 			EmailCol = new DataGridViewTextBoxColumn();
 			MfaCol = new DataGridViewCheckBoxColumn();
 			MfaNoCol = new DataGridViewTextBoxColumn();
+			DsProvider = new BindingSource(components);
+			addEditRemoveToolbar1 = new AddEditRemoveToolbar();
 			((System.ComponentModel.ISupportInitialize)DataGrid).BeginInit();
 			((System.ComponentModel.ISupportInitialize)DsProvider).BeginInit();
 			SuspendLayout();
-			// 
-			// ActionPanel
-			// 
-			ActionPanel.Dock = DockStyle.Bottom;
-			ActionPanel.Location = new Point(0, 633);
-			ActionPanel.Name = "ActionPanel";
-			ActionPanel.Size = new Size(1002, 32);
-			ActionPanel.TabIndex = 0;
 			// 
 			// DataGrid
 			// 
@@ -63,7 +55,7 @@
 			dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
 			dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
 			DataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-			DataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			DataGrid.ColumnHeadersHeight = 25;
 			DataGrid.Columns.AddRange(new DataGridViewColumn[] { NameCol, ServiceDescCol, DescCol, UrlCol, UserIdCol, PasswordCol, EmailCol, MfaCol, MfaNoCol });
 			DataGrid.DataSource = DsProvider;
 			dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -92,10 +84,6 @@
 			DataGrid.RowHeadersWidth = 25;
 			DataGrid.Size = new Size(1002, 633);
 			DataGrid.TabIndex = 1;
-			// 
-			// DsProvider
-			// 
-			DsProvider.DataSource = typeof(Ops.GeneralLogin);
 			// 
 			// NameCol
 			// 
@@ -160,12 +148,29 @@
 			MfaNoCol.HeaderText = "MFAPhoneNumber";
 			MfaNoCol.Name = "MfaNoCol";
 			// 
+			// DsProvider
+			// 
+			DsProvider.DataSource = typeof(Ops.GeneralLogin);
+			// 
+			// addEditRemoveToolbar1
+			// 
+			addEditRemoveToolbar1.Dock = DockStyle.Bottom;
+			addEditRemoveToolbar1.EditEnabled = false;
+			addEditRemoveToolbar1.Font = new Font("Segoe UI", 9.75F);
+			addEditRemoveToolbar1.Location = new Point(0, 633);
+			addEditRemoveToolbar1.MaximumSize = new Size(0, 32);
+			addEditRemoveToolbar1.MinimumSize = new Size(332, 32);
+			addEditRemoveToolbar1.Name = "addEditRemoveToolbar1";
+			addEditRemoveToolbar1.RemoveEnabled = false;
+			addEditRemoveToolbar1.Size = new Size(1002, 32);
+			addEditRemoveToolbar1.TabIndex = 2;
+			// 
 			// GeneralLoginControl
 			// 
 			AutoScaleDimensions = new SizeF(7F, 17F);
 			AutoScaleMode = AutoScaleMode.Font;
 			Controls.Add(DataGrid);
-			Controls.Add(ActionPanel);
+			Controls.Add(addEditRemoveToolbar1);
 			Margin = new Padding(4, 5, 4, 5);
 			Name = "GeneralLoginControl";
 			Size = new Size(1002, 665);
@@ -175,9 +180,7 @@
 		}
 
 		#endregion
-
-		private Panel ActionPanel;
-        private DataGridView DataGrid;
+		private DataGridView DataGrid;
         private BindingSource DsProvider;
 		private DataGridViewTextBoxColumn NameCol;
 		private DataGridViewTextBoxColumn ServiceDescCol;
@@ -188,5 +191,6 @@
 		private DataGridViewTextBoxColumn EmailCol;
 		private DataGridViewCheckBoxColumn MfaCol;
 		private DataGridViewTextBoxColumn MfaNoCol;
+		private AddEditRemoveToolbar addEditRemoveToolbar1;
 	}
 }
