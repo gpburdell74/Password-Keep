@@ -120,11 +120,12 @@
 			// 
 			// AddEditRemoveToolbar
 			// 
-			AutoScaleDimensions = new SizeF(7F, 15F);
+			AutoScaleDimensions = new SizeF(7F, 17F);
 			AutoScaleMode = AutoScaleMode.Font;
 			Controls.Add(RemoveButton);
 			Controls.Add(EditButton);
 			Controls.Add(AddButton);
+			Margin = new Padding(3);
 			MaximumSize = new Size(0, 32);
 			MinimumSize = new Size(332, 32);
 			Name = "AddEditRemoveToolbar";

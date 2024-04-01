@@ -22,30 +22,22 @@
 			DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
 			DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
 			DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-			ActionPanel = new Panel();
 			DataGrid = new DataGridView();
-			DsProvider = new BindingSource(components);
-			identityServiceTypeListBindingSource = new BindingSource(components);
 			NameCol = new DataGridViewTextBoxColumn();
 			DescCol = new DataGridViewTextBoxColumn();
 			IdServiceCol = new DataGridViewComboBoxColumn();
+			identityServiceTypeListBindingSource = new BindingSource(components);
 			UrlCol = new DataGridViewLinkColumn();
 			UserIdCol = new DataGridViewTextBoxColumn();
 			PasswordCol = new DataGridViewTextBoxColumn();
 			EmailCol = new DataGridViewTextBoxColumn();
 			MfaCol = new DataGridViewTextBoxColumn();
+			DsProvider = new BindingSource(components);
+			addEditRemoveToolbar1 = new AddEditRemoveToolbar();
 			((System.ComponentModel.ISupportInitialize)DataGrid).BeginInit();
-			((System.ComponentModel.ISupportInitialize)DsProvider).BeginInit();
 			((System.ComponentModel.ISupportInitialize)identityServiceTypeListBindingSource).BeginInit();
+			((System.ComponentModel.ISupportInitialize)DsProvider).BeginInit();
 			SuspendLayout();
-			// 
-			// ActionPanel
-			// 
-			ActionPanel.Dock = DockStyle.Bottom;
-			ActionPanel.Location = new Point(0, 468);
-			ActionPanel.Name = "ActionPanel";
-			ActionPanel.Size = new Size(1100, 32);
-			ActionPanel.TabIndex = 0;
 			// 
 			// DataGrid
 			// 
@@ -81,14 +73,6 @@
 			DataGrid.Size = new Size(1100, 468);
 			DataGrid.TabIndex = 1;
 			// 
-			// DsProvider
-			// 
-			DsProvider.DataSource = typeof(Ops.IdentityProvider);
-			// 
-			// identityServiceTypeListBindingSource
-			// 
-			identityServiceTypeListBindingSource.DataSource = typeof(Ops.IdentityServiceSelectionList);
-			// 
 			// NameCol
 			// 
 			NameCol.DataPropertyName = "Name";
@@ -116,6 +100,10 @@
 			IdServiceCol.SortMode = DataGridViewColumnSortMode.Automatic;
 			IdServiceCol.ValueMember = "Service";
 			IdServiceCol.Width = 200;
+			// 
+			// identityServiceTypeListBindingSource
+			// 
+			identityServiceTypeListBindingSource.DataSource = typeof(Ops.IdentityServiceSelectionList);
 			// 
 			// UrlCol
 			// 
@@ -157,25 +145,40 @@
 			MfaCol.HeaderText = "MFA Phone Number";
 			MfaCol.Name = "MfaCol";
 			// 
+			// DsProvider
+			// 
+			DsProvider.DataSource = typeof(Ops.IdentityProvider);
+			// 
+			// addEditRemoveToolbar1
+			// 
+			addEditRemoveToolbar1.Dock = DockStyle.Bottom;
+			addEditRemoveToolbar1.EditEnabled = false;
+			addEditRemoveToolbar1.Font = new Font("Segoe UI", 9.75F);
+			addEditRemoveToolbar1.Location = new Point(0, 468);
+			addEditRemoveToolbar1.MaximumSize = new Size(0, 32);
+			addEditRemoveToolbar1.MinimumSize = new Size(332, 32);
+			addEditRemoveToolbar1.Name = "addEditRemoveToolbar1";
+			addEditRemoveToolbar1.RemoveEnabled = false;
+			addEditRemoveToolbar1.Size = new Size(1100, 32);
+			addEditRemoveToolbar1.TabIndex = 2;
+			// 
 			// IdProviderControl
 			// 
 			AutoScaleDimensions = new SizeF(7F, 17F);
 			AutoScaleMode = AutoScaleMode.Font;
 			Controls.Add(DataGrid);
-			Controls.Add(ActionPanel);
+			Controls.Add(addEditRemoveToolbar1);
 			Margin = new Padding(4, 5, 4, 5);
 			Name = "IdProviderControl";
 			Size = new Size(1100, 500);
 			((System.ComponentModel.ISupportInitialize)DataGrid).EndInit();
-			((System.ComponentModel.ISupportInitialize)DsProvider).EndInit();
 			((System.ComponentModel.ISupportInitialize)identityServiceTypeListBindingSource).EndInit();
+			((System.ComponentModel.ISupportInitialize)DsProvider).EndInit();
 			ResumeLayout(false);
 		}
 
 		#endregion
-
-		private Panel ActionPanel;
-        private DataGridView DataGrid;
+		private DataGridView DataGrid;
         private BindingSource DsProvider;
 		private DataGridViewTextBoxColumn NameCol;
 		private DataGridViewTextBoxColumn DescCol;
@@ -186,5 +189,6 @@
 		private DataGridViewTextBoxColumn PasswordCol;
 		private DataGridViewTextBoxColumn EmailCol;
 		private DataGridViewTextBoxColumn MfaCol;
+		private AddEditRemoveToolbar addEditRemoveToolbar1;
 	}
 }

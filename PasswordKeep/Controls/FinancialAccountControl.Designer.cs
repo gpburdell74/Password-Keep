@@ -28,9 +28,7 @@
 			DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
 			DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
 			DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-			ActionPanel = new Panel();
 			DataGrid = new DataGridView();
-			DsProvider = new BindingSource(components);
 			NameCol = new DataGridViewTextBoxColumn();
 			DescCol = new DataGridViewTextBoxColumn();
 			AccountTypeCol = new DataGridViewComboBoxColumn();
@@ -46,17 +44,11 @@
 			MinPaymentCol = new DataGridViewTextBoxColumn();
 			IsAutoPayCol = new DataGridViewCheckBoxColumn();
 			AutoPayDayCol = new DataGridViewTextBoxColumn();
+			DsProvider = new BindingSource(components);
+			ActionBar = new AddEditRemoveToolbar();
 			((System.ComponentModel.ISupportInitialize)DataGrid).BeginInit();
 			((System.ComponentModel.ISupportInitialize)DsProvider).BeginInit();
 			SuspendLayout();
-			// 
-			// ActionPanel
-			// 
-			ActionPanel.Dock = DockStyle.Bottom;
-			ActionPanel.Location = new Point(0, 468);
-			ActionPanel.Name = "ActionPanel";
-			ActionPanel.Size = new Size(1100, 32);
-			ActionPanel.TabIndex = 0;
 			// 
 			// DataGrid
 			// 
@@ -104,10 +96,6 @@
 			DataGrid.RowHeadersWidth = 32;
 			DataGrid.Size = new Size(1100, 468);
 			DataGrid.TabIndex = 1;
-			// 
-			// DsProvider
-			// 
-			DsProvider.DataSource = typeof(Data.Entity.FinancialAccountEntry);
 			// 
 			// NameCol
 			// 
@@ -252,12 +240,29 @@
 			AutoPayDayCol.Name = "AutoPayDayCol";
 			AutoPayDayCol.ToolTipText = "If auto-pay is used, enter the day of the month the transaction occurs.";
 			// 
+			// DsProvider
+			// 
+			DsProvider.DataSource = typeof(Data.Entity.FinancialAccountEntry);
+			// 
+			// ActionBar
+			// 
+			ActionBar.Dock = DockStyle.Bottom;
+			ActionBar.EditEnabled = false;
+			ActionBar.Font = new Font("Segoe UI", 9.75F);
+			ActionBar.Location = new Point(0, 468);
+			ActionBar.MaximumSize = new Size(0, 32);
+			ActionBar.MinimumSize = new Size(332, 32);
+			ActionBar.Name = "ActionBar";
+			ActionBar.RemoveEnabled = false;
+			ActionBar.Size = new Size(1100, 32);
+			ActionBar.TabIndex = 2;
+			// 
 			// FinancialAccountControl
 			// 
 			AutoScaleDimensions = new SizeF(7F, 17F);
 			AutoScaleMode = AutoScaleMode.Font;
 			Controls.Add(DataGrid);
-			Controls.Add(ActionPanel);
+			Controls.Add(ActionBar);
 			Margin = new Padding(4, 5, 4, 5);
 			Name = "FinancialAccountControl";
 			Size = new Size(1100, 500);
@@ -267,9 +272,7 @@
 		}
 
 		#endregion
-
-		private Panel ActionPanel;
-        private DataGridView DataGrid;
+		private DataGridView DataGrid;
         private BindingSource DsProvider;
         private DataGridViewTextBoxColumn LastAmountPaidCol;
 		private DataGridViewTextBoxColumn NameCol;
@@ -287,5 +290,6 @@
 		private DataGridViewTextBoxColumn MinPaymentCol;
 		private DataGridViewCheckBoxColumn IsAutoPayCol;
 		private DataGridViewTextBoxColumn AutoPayDayCol;
+		private AddEditRemoveToolbar ActionBar;
 	}
 }
