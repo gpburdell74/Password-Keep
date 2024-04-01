@@ -2,13 +2,26 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
+/.vs
 /.vs/PasswordKeep/v17/.suo
 /.vs/PasswordKeep/v17/DocumentLayout.json
 /PasswordKeep/obj/Debug/net8.0-windows
 /PasswordKeep.Data/obj/Debug/net8.0
+/PasswordKeep/bin
 /PasswordKeep/obj
 /PasswordKeep.Data/obj
 /PasswordKeep.Data.Test/obj
 /PasswordKeep.DataDefinitions/obj
 /PasswordKeep.Ops/obj
 /PasswordKeep.Opts.Test/obj
+/PasswordKeep/bin/Debug/net8.0-windows
+/PasswordKeep.Data/bin/Debug/net8.0
+/PasswordKeep.Data.Test/bin/Debug/net8.0
+/PasswordKeep.DataDefinitions/bin/Debug/net8.0
+/PasswordKeep.Ops/bin/Debug/net8.0
+/PasswordKeep.Opts.Test/bin/Debug/net8.0
+/.vs/PasswordKeep/FileContentIndex/1a44e701-2031-4f52-bc90-46c6ada0ab63.vsidx
+/.vs/PasswordKeep/FileContentIndex/2a7b8e58-780a-47d3-ba7d-a90fdd039d0c.vsidx
+/.vs/PasswordKeep/FileContentIndex/4cf5df68-6626-4865-98fe-9b52ded22e4f.vsidx
+/.vs/PasswordKeep/FileContentIndex/5c43772f-9ba2-4d8e-ae81-b498971d65c2.vsidx
+/.vs/PasswordKeep/FileContentIndex/636c2216-993a-48c9-b337-3f2c217834aa.vsidx
