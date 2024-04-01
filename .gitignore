@@ -1,0 +1,14 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/PasswordKeep/v17/.suo
+/.vs/PasswordKeep/v17/DocumentLayout.json
+/PasswordKeep/obj/Debug/net8.0-windows
+/PasswordKeep.Data/obj/Debug/net8.0
+/PasswordKeep/obj
+/PasswordKeep.Data/obj
+/PasswordKeep.Data.Test/obj
+/PasswordKeep.DataDefinitions/obj
+/PasswordKeep.Ops/obj
+/PasswordKeep.Opts.Test/obj
