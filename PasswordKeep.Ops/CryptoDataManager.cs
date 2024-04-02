@@ -137,7 +137,7 @@ namespace PasswordKeep.Ops
 		/// Loads the data content from the specified file name.
 		/// </summary>
 		/// <param name="fileName">
-		/// A string containing the fullt-qualified path and name of the file to be read.
+		/// A string containing the fully-qualified path and name of the file to be read.
 		/// </param>
 		public void Load(string fileName)
 		{
@@ -157,8 +157,12 @@ namespace PasswordKeep.Ops
 		/// <param name="sourceStream">A <see cref="Stream" /> to read the contents from.</param>
 		public void Load(Stream sourceStream)
 		{
-			// Try to read the data content.
+			// Read the version number from the file.
+			byte[]? versionData = AppVersionReaderWriter.ReadVersion(sourceStream);
+
+			// Try to read the data content - branch/inject objects based on the version numbers.
 			CryptoEntityReader reader = new CryptoEntityReader(sourceStream, _parameters.UserId, _parameters.Password);
+
 			PKDataSet? dataSet = reader.ReadDataSet();
 			reader.Close();
 			reader.Dispose();
@@ -181,7 +185,7 @@ namespace PasswordKeep.Ops
 		/// Saves the data content to the specified file name.
 		/// </summary>
 		/// <param name="fileName">
-		/// A string containing the fullt-qualified path and name of the file to be saved.
+		/// A string containing the fully-qualified path and name of the file to be saved.
 		/// </param>
 		public void Save(string fileName)
 		{
@@ -203,6 +207,10 @@ namespace PasswordKeep.Ops
 			if (_bills != null && _finAccounts != null && _logins != null && _dataEntries != null && _idProviders != null &&
 				destinationStream != null)
 			{
+				// Write the application version to the file.
+				AppVersionReaderWriter.WriteVersion(destinationStream);
+
+				// Write the data set - branch/inject objects based on the version number. (Future).
 				PKDataSet dataSet = new PKDataSet(
 					_bills.ExtractEntityList(),
 					_finAccounts.ExtractEntityList(),
@@ -210,8 +218,10 @@ namespace PasswordKeep.Ops
 					_dataEntries.ExtractEntityList(),
 					_idProviders.ExtractEntityList());
 
+
 				CryptoEntityWriter writer = new CryptoEntityWriter(destinationStream, _parameters.UserId, _parameters.Password);
 				writer.WriteDataSet(dataSet);
+
 				writer.Close();
 				writer.Dispose();
 				dataSet.Dispose();
