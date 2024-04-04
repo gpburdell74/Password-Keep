@@ -53,7 +53,7 @@
 		/// Loads the data content from the specified file name.
 		/// </summary>
 		/// <param name="fileName">
-		/// A string containing the fullt-qualified path and name of the file to be read.
+		/// A string containing the fully-qualified path and name of the file to be read.
 		/// </param>
 		void Load(string fileName);
 		/// <summary>
@@ -67,7 +67,7 @@
 		/// Saves the data content to the specified file name.
 		/// </summary>
 		/// <param name="fileName">
-		/// A string containing the fullt-qualified path and name of the file to be saved.
+		/// A string containing the fully-qualified path and name of the file to be saved.
 		/// </param>
 		void Save(string fileName);
 		/// <summary>

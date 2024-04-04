@@ -163,7 +163,7 @@ namespace PasswordKeep.Ops
 			// Try to read the data content - branch/inject objects based on the version numbers.
 			CryptoEntityReader reader = new CryptoEntityReader(sourceStream, _parameters.UserId, _parameters.Password);
 
-			PKDataSet? dataSet = reader.ReadDataSet();
+    PKDataSet? dataSet = reader.ReadDataSet();
 			reader.Close();
 			reader.Dispose();
 

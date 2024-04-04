@@ -11,7 +11,7 @@ namespace PasswordKeep.Ops
 		/// Creates a new, unique file name in order to back up the original file.
 		/// </summary>
 		/// <param name="originalFileName">
-		/// A string containing the fully-qualfied path and name of the original file.
+		/// A string containing the fully-qualified path and name of the original file.
 		/// </param>
 		/// <returns>
 		/// A string containing the new file name of the backup file to be created, or <b>null</b> if the operation fails.
@@ -48,7 +48,7 @@ namespace PasswordKeep.Ops
 		/// Tries to create a backup of the specified file.
 		/// </summary>
 		/// <param name="originalFileName">
-		/// A string containing the fully-qualfied path and name of the original file.
+		/// A string containing the fully-qualified path and name of the original file.
 		/// </param>
 		/// <returns>
 		/// <b>true</b> if the operation is successful; otherwise, returns <b>false</b>.
@@ -63,7 +63,7 @@ namespace PasswordKeep.Ops
 				string? backupFileName = GetBackupFileName(originalFileName);
 				if (!string.IsNullOrEmpty(backupFileName))
 				{
-					// Copy the priginal to the new backup file.
+					// Copy the original to the new backup file.
 					success = SafeIO.CopyFile(originalFileName, backupFileName);
 				}
 			}
@@ -73,7 +73,7 @@ namespace PasswordKeep.Ops
 		/// Opens the file for reading the content.
 		/// </summary>
 		/// <param name="fileName">
-		/// A string containing the fully-qualfied path and name of the file to be read.
+		/// A string containing the fully-qualified path and name of the file to be read.
 		/// </param>
 		/// <returns>
 		/// An open <see cref="FileStream"/> to be read from if successful; otherwise, returns <b>null</b>.
@@ -106,7 +106,7 @@ namespace PasswordKeep.Ops
 		/// and re-creates the file for writing.
 		/// </remarks>
 		/// <param name="originalFileName">
-		/// A string containing the fully-qualfied path and name of the original file.
+		/// A string containing the fully-qualified path and name of the original file.
 		/// </param>
 		/// <returns>
 		/// An open <see cref="FileStream"/> to be written to if successful; otherwise, returns <b>null</b>.
