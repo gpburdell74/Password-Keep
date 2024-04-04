@@ -23,13 +23,14 @@ namespace PasswordKeep.UI
 		/// </param>
 		public static void StartBrowser(string url)
 		{
-			string? callToInvoke = RenderBrowserStartCommand(url);
+			string? callToInvoke = RenderBrowserStartCommand();
+			string parameter = "\"" + url + "\"";
 			if (callToInvoke != null)
 			{
 				try
 
 				{
-					System.Diagnostics.Process.Start(callToInvoke);
+					System.Diagnostics.Process.Start(callToInvoke, parameter);
 				}
 				catch (Exception ex)
 				{
@@ -49,12 +50,12 @@ namespace PasswordKeep.UI
 		/// <returns>
 		/// A string containing the command, or <b>null</b> if the operation is not valid.
 		/// </returns>
-		private static string? RenderBrowserStartCommand(string url)
+		private static string? RenderBrowserStartCommand()
 		{
 			string? callPath = null;
 
 			string? windowsPath = GetWindowsPath();
-			if (!string.IsNullOrEmpty(windowsPath) && !string.IsNullOrEmpty(url))
+			if (!string.IsNullOrEmpty(windowsPath))
 			{
 				StringBuilder builder = new StringBuilder();
 
@@ -64,13 +65,8 @@ namespace PasswordKeep.UI
 				// \explorer.exe 
 				builder.Append(ExplorerExe);
 
-				// "<some url here>"
-				builder.Append(" \"");
-				builder.Append(url);
-				builder.Append("\"");
-
 				// Should look similar to:
-				// C:\Windows\explorer.exe "http://www.microsoft.com"
+				// C:\Windows\explorer.exe
 				callPath = builder.ToString();
 				builder.Clear();
 			}
@@ -82,7 +78,7 @@ namespace PasswordKeep.UI
 		/// Gets the Windows operating system path.
 		/// </summary>
 		/// <returns>
-		/// A stirng containing the path, if successful; otherwise, returns <b>null</b>.
+		/// A string containing the path, if successful; otherwise, returns <b>null</b>.
 		/// </returns>
 		private static string? GetWindowsPath()
 		{
