@@ -265,7 +265,20 @@ namespace PasswordKeep.UI
 		private void HandleEditButtonClicked(object? sender, EventArgs e)
 		{
 			SetPreLoadState();
-
+			if (DataGrid.CurrentRow != null)
+			{ 
+				GeneralData item = (GeneralData)DataGrid.CurrentRow.DataBoundItem;
+				EditGeneralDataDialog dialog = new EditGeneralDataDialog(item);
+				DialogResult result = dialog.ShowDialog();
+				if (result == DialogResult.OK && dialog.Data != null)
+				{
+					DataGrid.DataSource = _data;
+					DataGrid.Update();
+					Invalidate();
+				}
+				dialog.Dispose();
+			}
+			SetState();
 			SetPostLoadState();
 		}
 		/// <summary>
@@ -276,7 +289,25 @@ namespace PasswordKeep.UI
 		private void HandleRemoveButtonClicked(object? sender, EventArgs e)
 		{
 			SetPreLoadState();
-
+			if (_data != null && DataGrid.CurrentRow != null)
+			{
+				GeneralData? item = (GeneralData)DataGrid.CurrentRow.DataBoundItem;
+				if (item != null)
+				{
+					DialogResult result = MessageBox.Show("Are you sure you want to delete this entry?", "Delete?",
+						MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+					if (result == DialogResult.Yes)
+					{
+						_data.Remove(item);
+						item?.Dispose();
+						item = null;
+						DataGrid.DataSource = _data;
+						DataGrid.Update();
+						Invalidate();
+					}
+				}
+			}
+			SetState();
 			SetPostLoadState();
 		}
 		#endregion

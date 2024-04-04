@@ -1,6 +1,6 @@
 ﻿namespace PasswordKeep.UI
 {
-	partial class AddGeneralDataDialog
+	partial class EditGeneralDataDialog
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -210,6 +210,7 @@
 			// 
 			NextDueDate.Location = new Point(105, 153);
 			NextDueDate.Name = "NextDueDate";
+			NextDueDate.ShowCheckBox = true;
 			NextDueDate.Size = new Size(300, 25);
 			NextDueDate.TabIndex = 10;
 			ttp.SetToolTip(NextDueDate, "Select the next due date for this entry, if applicable.");
@@ -218,6 +219,7 @@
 			// 
 			LastPaidDate.Location = new Point(105, 122);
 			LastPaidDate.Name = "LastPaidDate";
+			LastPaidDate.ShowCheckBox = true;
 			LastPaidDate.Size = new Size(300, 25);
 			LastPaidDate.TabIndex = 8;
 			ttp.SetToolTip(LastPaidDate, "Select a date this entry was last paid, if applicable.");
@@ -572,7 +574,7 @@
 			// 
 			ErrorProvider.ContainerControl = this;
 			// 
-			// AddGeneralDataDialog
+			// EditGeneralDataDialog
 			// 
 			AutoScaleDimensions = new SizeF(7F, 17F);
 			AutoScaleMode = AutoScaleMode.Font;
@@ -597,7 +599,7 @@
 			FormBorderStyle = FormBorderStyle.FixedDialog;
 			KeyPreview = true;
 			Margin = new Padding(4, 5, 4, 5);
-			Name = "AddGeneralDataDialog";
+			Name = "EditGeneralDataDialog";
 			StartPosition = FormStartPosition.CenterScreen;
 			FinancialPanel.ResumeLayout(false);
 			FinancialPanel.PerformLayout();

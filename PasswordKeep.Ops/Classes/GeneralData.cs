@@ -70,13 +70,13 @@ namespace PasswordKeep.Ops
                 if (Data == null)
                     return 0;
                 else
-                    return Data.Available;
+                    return Data.CurrentBalance;
             }
             set
             {
-                if (Data != null && Data.Available != value)
+                if (Data != null && Data.CurrentBalance != value)
                 {
-                    Data.Available = value;
+                    Data.CurrentBalance = value;
                     OnPropertyChanged(nameof(Available));
                 }
             }
@@ -136,14 +136,14 @@ namespace PasswordKeep.Ops
                 if (Data == null)
                     return 0;
                 else
-                    return Data.Available;
+                    return Data.MinimumDue;
             }
             set
             {
-                if (Data != null && Data.Available != value)
+                if (Data != null && Data.MinimumDue != value)
                 {
-                    Data.Available = value;
-                    OnPropertyChanged(nameof(Available));
+                    Data.MinimumDue = value;
+                    OnPropertyChanged(nameof(MinimumDue));
                 }
             }
         }

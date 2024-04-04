@@ -210,7 +210,7 @@ namespace PasswordKeep.UI
 		/// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
 		private void OnEditClicked(EventArgs e)
 		{
-			AddClicked?.Invoke(this, e);
+			EditClicked?.Invoke(this, e);
 		}
 		/// <summary>
 		/// Raises the <see cref="E:RemoveClicked" /> event.
@@ -218,7 +218,7 @@ namespace PasswordKeep.UI
 		/// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
 		private void OnRemoveClicked(EventArgs e)
 		{
-			AddClicked?.Invoke(this, e);
+			RemoveClicked?.Invoke(this, e);
 		}
 		#endregion
 
