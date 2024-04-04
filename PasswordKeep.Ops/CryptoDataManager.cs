@@ -160,11 +160,10 @@ namespace PasswordKeep.Ops
 			// Read the version number from the file.
 			byte[]? versionData = AppVersionReaderWriter.ReadVersion(sourceStream);
 
-			// Try to read the data content.
+			// Try to read the data content - branch/inject objects based on the version numbers.
 			CryptoEntityReader reader = new CryptoEntityReader(sourceStream, _parameters.UserId, _parameters.Password);
 
-
-			PKDataSet? dataSet = reader.ReadDataSet();
+    PKDataSet? dataSet = reader.ReadDataSet();
 			reader.Close();
 			reader.Dispose();
 
@@ -211,6 +210,7 @@ namespace PasswordKeep.Ops
 				// Write the application version to the file.
 				AppVersionReaderWriter.WriteVersion(destinationStream);
 
+				// Write the data set - branch/inject objects based on the version number. (Future).
 				PKDataSet dataSet = new PKDataSet(
 					_bills.ExtractEntityList(),
 					_finAccounts.ExtractEntityList(),
@@ -218,8 +218,10 @@ namespace PasswordKeep.Ops
 					_dataEntries.ExtractEntityList(),
 					_idProviders.ExtractEntityList());
 
+
 				CryptoEntityWriter writer = new CryptoEntityWriter(destinationStream, _parameters.UserId, _parameters.Password);
 				writer.WriteDataSet(dataSet);
+
 				writer.Close();
 				writer.Dispose();
 				dataSet.Dispose();
