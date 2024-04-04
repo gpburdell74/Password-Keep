@@ -170,6 +170,10 @@ namespace PasswordKeep.UI
                     _dataManager = new CryptoDataManager(newParams);
                     _fileName = newParams.FileName;
                     SetOpenData();
+
+                    // Save the file to disk.
+                    Save();
+
                     SetState();
                 }
             }

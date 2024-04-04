@@ -117,23 +117,22 @@ namespace PasswordKeep.Ops
 
 			if (!string.IsNullOrEmpty(originalFileName))
 			{
-				if (BackupFile(originalFileName))
+				// Attempt to create a backup.
+				BackupFile(originalFileName);
+
+				if (SafeIO.DeleteFile(originalFileName))
 				{
-					if (SafeIO.DeleteFile(originalFileName))
+					try
 					{
-						try
-						{
-							saveToFileStream = new FileStream(originalFileName, FileMode.CreateNew, FileAccess.Write);
-						}
-						catch (Exception)
-						{
-							saveToFileStream = null;
-							// TODO: Global logging.
-						}
+						saveToFileStream = new FileStream(originalFileName, FileMode.CreateNew, FileAccess.Write);
+					}
+					catch (Exception)
+					{
+						saveToFileStream = null;
+						// TODO: Global logging.
 					}
 				}
 			}
-
 			return saveToFileStream;
 		}
 	}

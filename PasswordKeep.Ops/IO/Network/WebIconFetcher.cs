@@ -39,12 +39,12 @@ namespace PasswordKeep.Ops.IO.Network
 				if (fixedUrl != null)
 				{
 					// Try reading the favicon.ico file from the main page.
-					bmp = await TryReadingFavIconAsync(url).ConfigureAwait(false);
+					bmp = await TryReadingFavIconAsync(fixedUrl).ConfigureAwait(false);
 
 					if (bmp == null)
 					{
 						// Read the page header to determine the location of the specified Icon resource.
-						bmp = await TryMainSiteAsync(url).ConfigureAwait(false);
+						bmp = await TryMainSiteAsync(fixedUrl).ConfigureAwait(false);
 					}
 				}
 			}
@@ -106,8 +106,8 @@ namespace PasswordKeep.Ops.IO.Network
 				HttpResponseMessage? response = null;
 				try
 				{
-					request.Timeout = new TimeSpan(0, 0, 10);
-					response = await request.GetAsync(url).ConfigureAwait(false);
+					request.Timeout = new TimeSpan(0, 0, 1);
+					response = await request.GetAsync(url + "/favicon.ico").ConfigureAwait(false);
 				}
 				catch (Exception ex)
 				{
@@ -194,7 +194,14 @@ namespace PasswordKeep.Ops.IO.Network
 							bmp = await ReadImageFromResponseAsync(response).ConfigureAwait(false);
 							response.Dispose();
 						}
-						request.CancelPendingRequests();
+						try
+						{
+							request.CancelPendingRequests();
+						}
+						catch(Exception ex)
+						{
+						}
+
 						request.Dispose();
 						request = null;
 					}

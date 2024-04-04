@@ -15,6 +15,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			components = new System.ComponentModel.Container();
 			NameLabel = new Adaptive.Intelligence.Shared.UI.AdvancedLabel();
 			DescLabel = new Adaptive.Intelligence.Shared.UI.AdvancedLabel();
 			UrlLabel = new Adaptive.Intelligence.Shared.UI.AdvancedLabel();
@@ -27,12 +28,17 @@
 			AvailableLabel = new Adaptive.Intelligence.Shared.UI.AdvancedLabel();
 			CurrentText = new TextBox();
 			AvailableText = new TextBox();
-			NextDateLabel = new DateTimePicker();
+			NextDueDate = new DateTimePicker();
 			LastPaidDate = new DateTimePicker();
 			MinDueText = new TextBox();
 			CurrentBalanceLabel = new Adaptive.Intelligence.Shared.UI.AdvancedLabel();
 			FInancialHeader = new Adaptive.Intelligence.Shared.UI.SectionTitleHeader();
 			SecurityPanel = new Panel();
+			DeleteQuestionButton = new Adaptive.Intelligence.Shared.UI.AIButton();
+			EditQuestionButton = new Adaptive.Intelligence.Shared.UI.AIButton();
+			QuestionList = new Adaptive.Intelligence.Shared.UI.ColumnSortListView();
+			QuestionCol = new ColumnHeader();
+			AnswerCol = new ColumnHeader();
 			SecurityHeader = new Adaptive.Intelligence.Shared.UI.SectionTitleHeader();
 			AddQuestionButton = new Adaptive.Intelligence.Shared.UI.AIButton();
 			UserIdText = new Adaptive.Intelligence.Shared.UI.PasswordTextBox();
@@ -47,15 +53,13 @@
 			CloseButton = new Adaptive.Intelligence.Shared.UI.AIButton();
 			ButtonLine = new Adaptive.Intelligence.Shared.UI.LineControl();
 			ItemHeader = new ItemHeaderControl();
-			QuestionList = new Adaptive.Intelligence.Shared.UI.ColumnSortListView();
-			QuestionCol = new ColumnHeader();
-			AnswerCol = new ColumnHeader();
-			EditQuestionButton = new Adaptive.Intelligence.Shared.UI.AIButton();
-			DeleteQuestionButton = new Adaptive.Intelligence.Shared.UI.AIButton();
+			ErrorProvider = new ErrorProvider(components);
+			ttp = new ToolTip(components);
 			FinancialPanel.SuspendLayout();
 			SecurityPanel.SuspendLayout();
 			ButtonPanel.SuspendLayout();
 			ButtonAlignPanel.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)ErrorProvider).BeginInit();
 			SuspendLayout();
 			// 
 			// NameLabel
@@ -126,7 +130,7 @@
 			FinancialPanel.Controls.Add(AvailableLabel);
 			FinancialPanel.Controls.Add(CurrentText);
 			FinancialPanel.Controls.Add(AvailableText);
-			FinancialPanel.Controls.Add(NextDateLabel);
+			FinancialPanel.Controls.Add(NextDueDate);
 			FinancialPanel.Controls.Add(LastPaidDate);
 			FinancialPanel.Controls.Add(MinDueText);
 			FinancialPanel.Controls.Add(CurrentBalanceLabel);
@@ -188,22 +192,27 @@
 			// 
 			CurrentText.Location = new Point(105, 29);
 			CurrentText.Name = "CurrentText";
+			CurrentText.PlaceholderText = "($0.00)";
 			CurrentText.Size = new Size(300, 25);
 			CurrentText.TabIndex = 2;
+			ttp.SetToolTip(CurrentText, "Optionally, enter the current value or balance related to this entry.");
 			// 
 			// AvailableText
 			// 
 			AvailableText.Location = new Point(105, 60);
 			AvailableText.Name = "AvailableText";
+			AvailableText.PlaceholderText = "($0.00)";
 			AvailableText.Size = new Size(300, 25);
 			AvailableText.TabIndex = 4;
+			ttp.SetToolTip(AvailableText, "Optionally, enter the available dollar amount related to this entry.");
 			// 
-			// NextDateLabel
+			// NextDueDate
 			// 
-			NextDateLabel.Location = new Point(105, 153);
-			NextDateLabel.Name = "NextDateLabel";
-			NextDateLabel.Size = new Size(300, 25);
-			NextDateLabel.TabIndex = 0;
+			NextDueDate.Location = new Point(105, 153);
+			NextDueDate.Name = "NextDueDate";
+			NextDueDate.Size = new Size(300, 25);
+			NextDueDate.TabIndex = 0;
+			ttp.SetToolTip(NextDueDate, "Select the next due date for this entry, if applicable.");
 			// 
 			// LastPaidDate
 			// 
@@ -211,13 +220,16 @@
 			LastPaidDate.Name = "LastPaidDate";
 			LastPaidDate.Size = new Size(300, 25);
 			LastPaidDate.TabIndex = 8;
+			ttp.SetToolTip(LastPaidDate, "Select a date this entry was last paid, if applicable.");
 			// 
 			// MinDueText
 			// 
 			MinDueText.Location = new Point(105, 91);
 			MinDueText.Name = "MinDueText";
+			MinDueText.PlaceholderText = "($0.00)";
 			MinDueText.Size = new Size(300, 25);
 			MinDueText.TabIndex = 6;
+			ttp.SetToolTip(MinDueText, "Optionally, enter the minimum payment due, if applicable for this entry.");
 			// 
 			// CurrentBalanceLabel
 			// 
@@ -239,6 +251,7 @@
 			FInancialHeader.Size = new Size(412, 18);
 			FInancialHeader.TabIndex = 0;
 			FInancialHeader.Text = "Financial Data:";
+			ttp.SetToolTip(FInancialHeader, "Financial data related to this entry.");
 			// 
 			// SecurityPanel
 			// 
@@ -252,6 +265,92 @@
 			SecurityPanel.Size = new Size(412, 192);
 			SecurityPanel.TabIndex = 11;
 			// 
+			// DeleteQuestionButton
+			// 
+			DeleteQuestionButton.BorderWidth = 1;
+			DeleteQuestionButton.Checked = false;
+			DeleteQuestionButton.Enabled = false;
+			DeleteQuestionButton.HoverBorderColor = Color.Gray;
+			DeleteQuestionButton.HoverDirection = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
+			DeleteQuestionButton.HoverEndColor = Color.FromArgb(224, 224, 224);
+			DeleteQuestionButton.HoverFont = new Font("Segoe UI", 9.75F);
+			DeleteQuestionButton.HoverForeColor = Color.Black;
+			DeleteQuestionButton.HoverStartColor = Color.FromArgb(218, 194, 204);
+			DeleteQuestionButton.Location = new Point(174, 162);
+			DeleteQuestionButton.Name = "DeleteQuestionButton";
+			DeleteQuestionButton.NormalBorderColor = Color.Gray;
+			DeleteQuestionButton.NormalDirection = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
+			DeleteQuestionButton.NormalEndColor = Color.Silver;
+			DeleteQuestionButton.NormalFont = new Font("Segoe UI", 9.75F);
+			DeleteQuestionButton.NormalForeColor = Color.Black;
+			DeleteQuestionButton.NormalStartColor = Color.FromArgb(248, 248, 248);
+			DeleteQuestionButton.PressedBorderColor = Color.Gray;
+			DeleteQuestionButton.PressedDirection = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
+			DeleteQuestionButton.PressedEndColor = Color.FromArgb(174, 45, 61);
+			DeleteQuestionButton.PressedFont = new Font("Segoe UI", 9.75F);
+			DeleteQuestionButton.PressedForeColor = Color.White;
+			DeleteQuestionButton.PressedStartColor = Color.Gray;
+			DeleteQuestionButton.Size = new Size(75, 23);
+			DeleteQuestionButton.TabIndex = 3;
+			DeleteQuestionButton.Text = "&Delete";
+			DeleteQuestionButton.UseVisualStyleBackColor = true;
+			// 
+			// EditQuestionButton
+			// 
+			EditQuestionButton.BorderWidth = 1;
+			EditQuestionButton.Checked = false;
+			EditQuestionButton.Enabled = false;
+			EditQuestionButton.HoverBorderColor = Color.Gray;
+			EditQuestionButton.HoverDirection = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
+			EditQuestionButton.HoverEndColor = Color.FromArgb(224, 224, 224);
+			EditQuestionButton.HoverFont = new Font("Segoe UI", 9.75F);
+			EditQuestionButton.HoverForeColor = Color.Black;
+			EditQuestionButton.HoverStartColor = Color.FromArgb(218, 194, 204);
+			EditQuestionButton.Location = new Point(93, 162);
+			EditQuestionButton.Name = "EditQuestionButton";
+			EditQuestionButton.NormalBorderColor = Color.Gray;
+			EditQuestionButton.NormalDirection = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
+			EditQuestionButton.NormalEndColor = Color.Silver;
+			EditQuestionButton.NormalFont = new Font("Segoe UI", 9.75F);
+			EditQuestionButton.NormalForeColor = Color.Black;
+			EditQuestionButton.NormalStartColor = Color.FromArgb(248, 248, 248);
+			EditQuestionButton.PressedBorderColor = Color.Gray;
+			EditQuestionButton.PressedDirection = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
+			EditQuestionButton.PressedEndColor = Color.FromArgb(174, 45, 61);
+			EditQuestionButton.PressedFont = new Font("Segoe UI", 9.75F);
+			EditQuestionButton.PressedForeColor = Color.White;
+			EditQuestionButton.PressedStartColor = Color.Gray;
+			EditQuestionButton.Size = new Size(75, 23);
+			EditQuestionButton.TabIndex = 2;
+			EditQuestionButton.Text = "&Edit";
+			EditQuestionButton.UseVisualStyleBackColor = true;
+			// 
+			// QuestionList
+			// 
+			QuestionList.AllowColumnReorder = true;
+			QuestionList.BorderStyle = BorderStyle.FixedSingle;
+			QuestionList.Columns.AddRange(new ColumnHeader[] { QuestionCol, AnswerCol });
+			QuestionList.FullRowSelect = true;
+			QuestionList.GridLines = true;
+			QuestionList.Location = new Point(10, 25);
+			QuestionList.MultiSelect = false;
+			QuestionList.Name = "QuestionList";
+			QuestionList.ShowGroups = false;
+			QuestionList.Size = new Size(395, 131);
+			QuestionList.TabIndex = 0;
+			QuestionList.UseCompatibleStateImageBehavior = false;
+			QuestionList.View = View.Details;
+			// 
+			// QuestionCol
+			// 
+			QuestionCol.Text = "Question";
+			QuestionCol.Width = 250;
+			// 
+			// AnswerCol
+			// 
+			AnswerCol.Text = "Answer";
+			AnswerCol.Width = 140;
+			// 
 			// SecurityHeader
 			// 
 			SecurityHeader.Dock = DockStyle.Top;
@@ -261,6 +360,7 @@
 			SecurityHeader.Size = new Size(412, 18);
 			SecurityHeader.TabIndex = 9;
 			SecurityHeader.Text = "Security Questions";
+			ttp.SetToolTip(SecurityHeader, "Security Questions and Answers related to this entry.");
 			// 
 			// AddQuestionButton
 			// 
@@ -300,6 +400,7 @@
 			UserIdText.PlaceholderText = "(User ID or Login Name)";
 			UserIdText.Size = new Size(325, 25);
 			UserIdText.TabIndex = 7;
+			ttp.SetToolTip(UserIdText, "Enter your user Id or login name used when logging into this site.");
 			// 
 			// PasswordText
 			// 
@@ -310,27 +411,34 @@
 			PasswordText.PlaceholderText = "(Password)";
 			PasswordText.Size = new Size(325, 25);
 			PasswordText.TabIndex = 9;
+			ttp.SetToolTip(PasswordText, "Enter your password used when logging into this site.");
 			// 
 			// NameText
 			// 
 			NameText.Location = new Point(100, 82);
 			NameText.Name = "NameText";
+			NameText.PlaceholderText = "(Name)";
 			NameText.Size = new Size(325, 25);
 			NameText.TabIndex = 1;
+			ttp.SetToolTip(NameText, "Enter a name for this general data entry.");
 			// 
 			// DescText
 			// 
 			DescText.Location = new Point(100, 113);
 			DescText.Name = "DescText";
+			DescText.PlaceholderText = "(Description of Entry)";
 			DescText.Size = new Size(325, 25);
 			DescText.TabIndex = 3;
+			ttp.SetToolTip(DescText, "Optionally, enter a description for this entry.");
 			// 
 			// UrlText
 			// 
 			UrlText.Location = new Point(100, 144);
 			UrlText.Name = "UrlText";
+			UrlText.PlaceholderText = "(http://www.siteToLoginTo.com)";
 			UrlText.Size = new Size(325, 25);
 			UrlText.TabIndex = 5;
+			ttp.SetToolTip(UrlText, "Enter the website address used when logging into the site for this entry.");
 			// 
 			// ButtonPanel
 			// 
@@ -458,91 +566,11 @@
 			ItemHeader.Name = "ItemHeader";
 			ItemHeader.Size = new Size(432, 78);
 			ItemHeader.TabIndex = 0;
+			ttp.SetToolTip(ItemHeader, "Click on a star to indicate your rating of this entry.");
 			// 
-			// QuestionList
+			// ErrorProvider
 			// 
-			QuestionList.AllowColumnReorder = true;
-			QuestionList.BorderStyle = BorderStyle.FixedSingle;
-			QuestionList.Columns.AddRange(new ColumnHeader[] { QuestionCol, AnswerCol });
-			QuestionList.FullRowSelect = true;
-			QuestionList.GridLines = true;
-			QuestionList.Location = new Point(10, 25);
-			QuestionList.MultiSelect = false;
-			QuestionList.Name = "QuestionList";
-			QuestionList.ShowGroups = false;
-			QuestionList.Size = new Size(395, 131);
-			QuestionList.TabIndex = 0;
-			QuestionList.UseCompatibleStateImageBehavior = false;
-			QuestionList.View = View.Details;
-			// 
-			// QuestionCol
-			// 
-			QuestionCol.Text = "Question";
-			QuestionCol.Width = 250;
-			// 
-			// AnswerCol
-			// 
-			AnswerCol.Text = "Answer";
-			// 
-			// EditQuestionButton
-			// 
-			EditQuestionButton.BorderWidth = 1;
-			EditQuestionButton.Checked = false;
-			EditQuestionButton.Enabled = false;
-			EditQuestionButton.HoverBorderColor = Color.Gray;
-			EditQuestionButton.HoverDirection = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
-			EditQuestionButton.HoverEndColor = Color.FromArgb(224, 224, 224);
-			EditQuestionButton.HoverFont = new Font("Segoe UI", 9.75F);
-			EditQuestionButton.HoverForeColor = Color.Black;
-			EditQuestionButton.HoverStartColor = Color.FromArgb(218, 194, 204);
-			EditQuestionButton.Location = new Point(93, 162);
-			EditQuestionButton.Name = "EditQuestionButton";
-			EditQuestionButton.NormalBorderColor = Color.Gray;
-			EditQuestionButton.NormalDirection = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
-			EditQuestionButton.NormalEndColor = Color.Silver;
-			EditQuestionButton.NormalFont = new Font("Segoe UI", 9.75F);
-			EditQuestionButton.NormalForeColor = Color.Black;
-			EditQuestionButton.NormalStartColor = Color.FromArgb(248, 248, 248);
-			EditQuestionButton.PressedBorderColor = Color.Gray;
-			EditQuestionButton.PressedDirection = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
-			EditQuestionButton.PressedEndColor = Color.FromArgb(174, 45, 61);
-			EditQuestionButton.PressedFont = new Font("Segoe UI", 9.75F);
-			EditQuestionButton.PressedForeColor = Color.White;
-			EditQuestionButton.PressedStartColor = Color.Gray;
-			EditQuestionButton.Size = new Size(75, 23);
-			EditQuestionButton.TabIndex = 2;
-			EditQuestionButton.Text = "&Edit";
-			EditQuestionButton.UseVisualStyleBackColor = true;
-			// 
-			// DeleteQuestionButton
-			// 
-			DeleteQuestionButton.BorderWidth = 1;
-			DeleteQuestionButton.Checked = false;
-			DeleteQuestionButton.Enabled = false;
-			DeleteQuestionButton.HoverBorderColor = Color.Gray;
-			DeleteQuestionButton.HoverDirection = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
-			DeleteQuestionButton.HoverEndColor = Color.FromArgb(224, 224, 224);
-			DeleteQuestionButton.HoverFont = new Font("Segoe UI", 9.75F);
-			DeleteQuestionButton.HoverForeColor = Color.Black;
-			DeleteQuestionButton.HoverStartColor = Color.FromArgb(218, 194, 204);
-			DeleteQuestionButton.Location = new Point(174, 162);
-			DeleteQuestionButton.Name = "DeleteQuestionButton";
-			DeleteQuestionButton.NormalBorderColor = Color.Gray;
-			DeleteQuestionButton.NormalDirection = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
-			DeleteQuestionButton.NormalEndColor = Color.Silver;
-			DeleteQuestionButton.NormalFont = new Font("Segoe UI", 9.75F);
-			DeleteQuestionButton.NormalForeColor = Color.Black;
-			DeleteQuestionButton.NormalStartColor = Color.FromArgb(248, 248, 248);
-			DeleteQuestionButton.PressedBorderColor = Color.Gray;
-			DeleteQuestionButton.PressedDirection = System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal;
-			DeleteQuestionButton.PressedEndColor = Color.FromArgb(174, 45, 61);
-			DeleteQuestionButton.PressedFont = new Font("Segoe UI", 9.75F);
-			DeleteQuestionButton.PressedForeColor = Color.White;
-			DeleteQuestionButton.PressedStartColor = Color.Gray;
-			DeleteQuestionButton.Size = new Size(75, 23);
-			DeleteQuestionButton.TabIndex = 3;
-			DeleteQuestionButton.Text = "&Delete";
-			DeleteQuestionButton.UseVisualStyleBackColor = true;
+			ErrorProvider.ContainerControl = this;
 			// 
 			// AddGeneralDataDialog
 			// 
@@ -576,6 +604,7 @@
 			SecurityPanel.ResumeLayout(false);
 			ButtonPanel.ResumeLayout(false);
 			ButtonAlignPanel.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)ErrorProvider).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -605,7 +634,7 @@
 		private Adaptive.Intelligence.Shared.UI.AdvancedLabel AvailableLabel;
 		private TextBox CurrentText;
 		private TextBox AvailableText;
-		private DateTimePicker NextDateLabel;
+		private DateTimePicker NextDueDate;
 		private DateTimePicker LastPaidDate;
 		private TextBox MinDueText;
 		private Adaptive.Intelligence.Shared.UI.AdvancedLabel CurrentBalanceLabel;
@@ -618,5 +647,7 @@
 		private ColumnHeader AnswerCol;
 		private Adaptive.Intelligence.Shared.UI.AIButton DeleteQuestionButton;
 		private Adaptive.Intelligence.Shared.UI.AIButton EditQuestionButton;
+		private ToolTip ttp;
+		private ErrorProvider ErrorProvider;
 	}
 }

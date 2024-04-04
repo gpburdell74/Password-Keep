@@ -164,8 +164,8 @@ namespace PasswordKeep.UI
 		/// </summary>
 		protected override void AssignEventHandlers()
 		{
-			CloseButton.Click -= HandleCloseClicked;
-			SaveButton.Click -= HandleSaveClicked;
+			CloseButton.Click += HandleCloseClicked;
+			SaveButton.Click += HandleSaveClicked;
 		}
 		/// <summary>
 		/// Removes the event handlers for the controls on the dialog.

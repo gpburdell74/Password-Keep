@@ -244,7 +244,17 @@ namespace PasswordKeep.UI
 		private void HandleAddButtonClicked(object? sender, EventArgs e)
 		{
 			SetPreLoadState();
-
+			AddGeneralDataDialog dialog = new AddGeneralDataDialog();
+			DialogResult result = dialog.ShowDialog();
+			if (result == DialogResult.OK && dialog.Data != null)
+			{
+				GeneralData newItem = dialog.Data;
+				_data?.Add(newItem);
+				DataGrid.DataSource = _data;
+				Invalidate();
+			}
+			dialog.Dispose();
+			SetState();
 			SetPostLoadState();
 		}
 		/// <summary>
